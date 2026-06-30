@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-body: #6b6b6b;
+  --color-muted: #8b95a8;
+  --color-line: #e8e8e8;
+  --color-paper: #ffffff;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Dark closing bookend: true black with a very subtle 45deg diagonal texture. */
+.closing-section {
+  background-color: #0d0d0d;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+/* Minimal awakening loader: a slow sweeping line + animated ellipsis. */
+.awakening-bar {
+  width: 40%;
+  animation: awakening-sweep 1.4s ease-in-out infinite;
+}
+@keyframes awakening-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+.awakening-dots::after {
+  content: "";
+  animation: awakening-dots 1.5s steps(4, end) infinite;
+}
+@keyframes awakening-dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+}
